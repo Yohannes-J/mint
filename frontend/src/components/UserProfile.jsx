@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useAuthStore from "../store/auth.store";
 import useThemeStore from "../store/themeStore";
 
-const backendUrl = "http://localhost:1221";
+const backendUrl = "https://mint-7g4n.onrender.com";
 
 const UserProfile = () => {
   const dark = useThemeStore((s) => s.dark);
