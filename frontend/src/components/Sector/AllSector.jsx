@@ -6,8 +6,7 @@ import KPIGroupedTable from "../Table/KPIGroupedTable";
 import useThemeStore from "../../store/themeStore";
 import useAuthStore from "../../store/auth.store";
 
-const BACKEND_PORT = 1221;
-const BACKEND_URL = `http://localhost:${BACKEND_PORT}`;
+const BACKEND_URL = "https://mint-7g4n.onrender.com";
 
 function AllSector() {
   const { sectorId: sectorIdFromParams } = useParams();
