@@ -55,7 +55,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://plan-monitoring.onrender.com",
     credentials: true,
   })
 );
@@ -101,7 +101,7 @@ app.use("/api/worker-performance", WorkerPerformanceRouter);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://plan-monitoring.onrender.com",
     credentials: true,
   },
 });
