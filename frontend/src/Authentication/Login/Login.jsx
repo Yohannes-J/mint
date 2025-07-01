@@ -5,8 +5,8 @@ import useAuthStore from "../../store/auth.store";
 import useThemeStore from "../../store/themeStore";
 import exampleImage from "../../assets/download.jpg";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import hmoeImage from "../../assets/download1.jpg";
-import hmoeImag from "../../assets/download2.jpg";
+import homeImage from "../../assets/download1.jpg";
+import homeImag from "../../assets/download2.jpg";
 
 
 function Login() {
