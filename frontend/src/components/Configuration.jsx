@@ -5,7 +5,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import useThemeStore from "../store/themeStore"; // adjust path if needed
 
-const backendUrl = "http://localhost:1221";
+const backendUrl = "https://mint-7g4n.onrender.com";
 
 export default function SectorSubsectorConfig() {
   const dark = useThemeStore((state) => state.dark);
