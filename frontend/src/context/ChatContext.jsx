@@ -3,7 +3,7 @@ import axios from "axios";
 import { io } from "socket.io-client";
 
 const ChatContext = createContext();
-const SOCKET_URL = "http://localhost:1221";
+const SOCKET_URL = "https://mint-7g4n.onrender.com";
 
 export function useChat() {
   return useContext(ChatContext);
