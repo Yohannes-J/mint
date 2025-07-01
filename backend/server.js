@@ -11,7 +11,7 @@ import { Server } from "socket.io";
 // Import multer middleware
 import { upload } from "./middlewares/multer.js";
 
-// Routes and Middleware
+// Routes
 import authMiddleware from "./middlewares/authMiddleware.js";
 import profileRouter from "./routes/profileRoutes.js";
 import userRouter from "./routes/userRoutes.js";
@@ -30,7 +30,6 @@ import kpi2Router from "./routes/kpiRoute2.js";
 import kpiAssignmentRouter from "./routes/kpiAssignmentRoutes.js";
 import menuRouter from "./routes/menuRoutes.js";
 import kpiYearAssignmentRouter from "./routes/kpiYearAssignmentRoutes.js";
-import planRoutes from "./routes/planRoutes.js";
 import performanceRoutes from "./routes/performanceRoutes.js";
 import targetRouter from "./routes/targetValidationRoutes.js";
 import performanceValidationRouter from "./routes/performanceValidationRoutes.js";
@@ -49,21 +48,29 @@ connectDB();
 
 const app = express();
 
+// ✅ Middlewares
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// ✅ Updated CORS to allow both frontend domains
 app.use(
   cors({
     origin: "http://localhost:5173",
+
+    origin: [
+      "https://mint-planmonitoring.onrender.com",
+      "https://mint-7g4n.onrender.com",
+    ],
+
     credentials: true,
   })
 );
 
-// Serve uploaded files statically from absolute path
+// ✅ Serve uploaded files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Routes setup
+// ✅ Routes setup
 app.get("/api/profile", authMiddleware, profileRouter);
 app.use("/api/users", userRouter);
 app.use("/api/admin", adminRouter);
@@ -81,14 +88,11 @@ app.use("/api/kras2", kra2Router);
 app.use("/api/assign", kpiAssignmentRouter);
 app.use("/api/menu", menuRouter);
 app.use("/api/year", kpiYearAssignmentRouter);
-app.use("/api", planRoutes);
-app.use("/api/plans", planRouter);
-app.use("/api", performanceRoutes);
+app.use("/api/performance", performanceRoutes);
 app.use("/api/target-validation", targetRouter);
 app.use("/api/performance-validation", performanceValidationRouter);
 app.use("/api/chat", chatRouter);
 app.use("/api/users/update-profile", profileRouter);
-app.use("/api/performance", performanceRoutes);
 app.use("/api/kpi-table", KpiTableRouter);
 app.use("/api/kra2", kra2Router);
 app.use("/api/kpi2", kpi2Router);
@@ -97,11 +101,17 @@ app.use("/api/measure", kpiMeasureRouter);
 app.use("/api/worker-plans", workerPlanRouter);
 app.use("/api/worker-performance", WorkerPerformanceRouter);
 
-// Socket.io setup
+// ✅ Socket.io setup
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:5173",
+
+    origin: [
+      "https://mint-planmonitoring.onrender.com",
+      "https://mint-7g4n.onrender.com",
+    ],
+
     credentials: true,
   },
 });
@@ -123,11 +133,14 @@ io.on("connection", (socket) => {
   });
 });
 
+// ✅ Test route
 app.get("/", (req, res) => {
-  res.send("online server");
+  res.send("✅ Online backend server is working.");
 });
 
+// ✅ Export for testing or reuse
 export { io, onlineUsers, server };
 
+// ✅ Start server
 const PORT = process.env.PORT || 1221;
 server.listen(PORT, () => console.log(`✅ Backend running on port ${PORT}`));

@@ -5,6 +5,9 @@ import useAuthStore from "../../store/auth.store";
 import useThemeStore from "../../store/themeStore";
 import exampleImage from "../../assets/download.jpg";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+import homeImage from "../../assets/download1.jpg";
+import homeImag from "../../assets/download2.jpg";
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -110,12 +113,12 @@ function Login() {
 
         <div className="grid grid-cols-4  gap-4 mt-8">
           <img
-            src="http://www.mint.gov.et/documents/d/guest/2-3-jpg?imagePreview=1"
+            src={homeImage}
             alt="gallery1"
             className="rounded-lg h-64 object-cover col-span-2"
           />
           <img
-            src="http://www.mint.gov.et/documents/d/guest/1-38-jpg?imagePreview=1"
+            src={homeImag}
             alt="gallery2"
             className="rounded-lg h-64  object-cover col-span-2"
           />

@@ -6,8 +6,8 @@ import KPIGroupedTable from "../Table/KPIGroupedTable";
 import useAuthStore from "../../store/auth.store";
 import useThemeStore from "../../store/themeStore";
 
-const BACKEND_PORT = 1221;
-const BACKEND_URL = `http://localhost:${BACKEND_PORT}`;
+
+const BACKEND_URL = "https://mint-7g4n.onrender.com";
 
 function AllSubsector() {
   const { subsectorId: subsectorIdFromParams } = useParams();

@@ -22,7 +22,7 @@ function TopNavBar({ sidebarOpen, setSidebarOpen }) {
   const fetchUnreadCount = useCallback(async () => {
     if (!user?._id) return;
     try {
-      const res = await axios.get(`http://localhost:1221/api/chat/unread`, {
+      const res = await axios.get(`https://mint-7g4n.onrender.com/api/chat/unread`, {
         withCredentials: true,
       });
       setUnreadCount(res.data.count || 0);
@@ -35,7 +35,7 @@ function TopNavBar({ sidebarOpen, setSidebarOpen }) {
     if (!user?._id) return;
     try {
       const res = await axios.get(
-        `http://localhost:1221/api/notification/get-notifications/${user._id}`
+        `https://mint-7g4n.onrender.com/api/notification/get-notifications/${user._id}`
       );
       setNotifCount(res.data.length);
     } catch {

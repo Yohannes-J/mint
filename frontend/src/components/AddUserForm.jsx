@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useThemeStore from "../store/themeStore";
 
-const backendUrl = "http://localhost:1221";
+const backendUrl = "https://mint-7g4n.onrender.com";
 
 const AddUser = () => {
   const { dark } = useThemeStore();
